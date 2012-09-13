@@ -26,10 +26,6 @@
 		<property name="dataSource" ref="dataSource" />
   		<property name="annotatedClasses">
             <list>    
-            	<value>com.Madeleine.Entity.Madeleine</value>
-                <value>com.Madeleine.Entity.MadeleinePhoto</value>
-                <value>com.Madeleine.Entity.User</value>  
-               	<value>com.SB.entity.Board</value>
                 <value>com.TravelTape.Entity.Tape</value>  
                 <value>com.TravelTape.Entity.TapeContents</value>
                 <value>com.Facebook.FacebookInfo</value>
@@ -78,8 +74,7 @@
 	-->
 	<tx:annotation-driven />
 	
-	<context:component-scan base-package="com.Madeleine.DAO" />
+	<!--context:component-scan base-package="com.Madeleine.DAO" />
 	<context:component-scan base-package="com.Madeleine.Biz" />
-	<context:component-scan base-package="com.Facebook" 	 />
-	
+	<context:component-scan base-package="com.Facebook" 	 /-->
 </beans>
