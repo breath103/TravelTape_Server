@@ -11,6 +11,7 @@
     	<mapping class="com.SB.entity.Board"/>
     	<mapping class="com.TravelTape.Entity.Tape"/>
     	<mapping class="com.TravelTape.Entity.TapeContents"/>
+    	<mapping class="com.TravelTape.Entity.TravelTapeUser"/>
     	<mapping class="com.Facebook.FacebookInfo" />
   	</session-factory>
 </hibernate-configuration>

@@ -10,13 +10,8 @@ function FBAuthInit(appID,callback)
 	    else {
 	    	alert("Not Conneted");
 	    	FB.login(function(response) {
-	    	//	alert("LOIGN");
+	    		alert("LOIGN");
 	    		console.log(response);
-	    		$.get("/NewMadeleine/joinWithFacebookInfo.m",
-	    				{facebook_id : response.authResponse.userID , access_token : response.authResponse.accessToken },
-	    				function(response){
-	    					console.log(response);
-	    				},"json");
 	    	}, {scope: 'email,read_stream,user_about_me,user_photos,publish_stream,read_friendlists,offline_access'});
 	    	/*
 	    	if (window.location.hash.length == 0) 

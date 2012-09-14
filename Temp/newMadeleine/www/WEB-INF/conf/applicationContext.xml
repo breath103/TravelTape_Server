@@ -28,6 +28,7 @@
             <list>    
                 <value>com.TravelTape.Entity.Tape</value>  
                 <value>com.TravelTape.Entity.TapeContents</value>
+               	<value>com.TravelTape.Entity.TravelTapeUser</value>
                 <value>com.Facebook.FacebookInfo</value>
             </list>
         </property>
