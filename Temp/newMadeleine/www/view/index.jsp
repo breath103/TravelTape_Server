@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"
 	import = "com.TravelTape.Entity.*,
 			  net.sf.json.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -19,6 +20,8 @@
 					console.log(authResponse);
 					//로직상으로는 이부분을 통과하면 자동으로 로그인을 시켜버린다.
 					FB.api("me",function(me){
+						location.href = sprintf("./joinWithFacebookInfo.tt?facebook_id=%s&access_token=%s&name=%s&email=%s",authResponse.userID,authResponse.accessToken,me.name,me.email);
+						/*
 						$.post("./joinWithFacebookInfo.tt",{
 							facebook_id  : authResponse.userID,
 							access_token : authResponse.accessToken,
@@ -29,6 +32,7 @@
 							alert("인증 완료");
 							location.href = './main.tt';
 						},"json");
+						*/
 					});
 				});
 			}
@@ -45,7 +49,9 @@
 		<%	TravelTapeUser user = (TravelTapeUser)session.getAttribute(TravelTapeUser.sessionAttributeName);
 			if(user == null){%>
 				<button onclick="loginWithFacebook();">페이스북으로 회원가입하기</button>
-			<%}else{%>
+			<%}else{
+				user 
+				%>
 				<div style="width:100%">
 					<%=user.getIdx() %> </br>
 					<%=user.getName() %> </br>

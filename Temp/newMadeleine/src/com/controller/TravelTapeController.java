@@ -33,11 +33,18 @@ public class TravelTapeController {
 	}
 	
 	@RequestMapping(value = "/main.tt",method = RequestMethod.GET)
-	public ModelAndView mainHandler(){
+	public ModelAndView mainHandler(HttpSession httpSession){
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/index");
 		
+		TravelTapeUser user = (TravelTapeUser)httpSession.getAttribute(TravelTapeUser.sessionAttributeName);
+		if(user == null){
+			
+		}
+		else{
+			mav.addObject("user", user);
+		}
 		return mav;
 	}
 	
@@ -48,9 +55,6 @@ public class TravelTapeController {
 											String name,
 											String email,
 											HttpSession httpSession){
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/jsonView");
-
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -78,7 +82,10 @@ public class TravelTapeController {
 		
 
 		httpSession.setAttribute(TravelTapeUser.sessionAttributeName, user);
-		
+	
+		RedirectView rv = new RedirectView("/TravelTape");
+		rv.setExposeModelAttributes(false);
+		ModelAndView mav = new ModelAndView(rv);
 		return mav;
 	}
 	
@@ -89,6 +96,7 @@ public class TravelTapeController {
 
 		//logout
 		httpSession.setAttribute(TravelTapeUser.sessionAttributeName, null);
+		
 		return new ModelAndView(rv);
 	}
 
